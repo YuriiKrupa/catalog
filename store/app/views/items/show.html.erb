@@ -1,0 +1,25 @@
+<div class="card">
+
+	<img class="card-img-top" src="<%= @item.image.url(:large) %>" alt="Card image cap">
+
+	<div class="card-block">
+		
+		<h4 class="card-title"><%= @item.title %></h4>
+
+		<h6 class="card-subtitle mb-2 text-muted">Price: <%= @item.price %>$</h6>
+
+		<p class="card-text"><%= @item.description %></p>
+
+		<small>Created at:
+
+			<time><%= @item.created_at.to_date.strftime("%d %B, %Y")%></time>
+			<br/>
+			<%= link_to 'Edit item', edit_item_path(@item) %>
+			|
+			<%= link_to "Delete item", item_path(@item), method: :delete, data: { confirm: 'Are you sure'}  %>
+
+		</small>
+
+	</div>
+
+</div>

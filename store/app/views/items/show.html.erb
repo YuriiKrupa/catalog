@@ -14,10 +14,11 @@
 
 			<time><%= @item.created_at.to_date.strftime("%d %B, %Y")%></time>
 			<br/>
-			<%= link_to 'Edit item', edit_item_path(@item) %>
-			|
-			<%= link_to "Delete item", item_path(@item), method: :delete, data: { confirm: 'Are you sure'}  %>
-
+			<% if user_signed_in? %>
+				<%= link_to 'Edit item', edit_item_path(@item) %>
+				|
+				<%= link_to "Delete item", item_path(@item), method: :delete, data: { confirm: 'Are you sure'}  %>
+			<% end %>
 		</small>
 
 	</div>

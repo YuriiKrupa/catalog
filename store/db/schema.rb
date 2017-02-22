@@ -10,17 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215141440) do
+ActiveRecord::Schema.define(version: 20170221180548) do
 
-  create_table "carts", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "cart_id"
+    t.integer "quantity"
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["item_id"], name: "index_cart_items_on_item_id"
   end
 
-  create_table "carts_items", id: false, force: :cascade do |t|
-    t.integer "cart_id"
-    t.integer "item_id"
+  create_table "carts", force: :cascade do |t|
+    t.float   "total"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -33,10 +36,13 @@ ActiveRecord::Schema.define(version: 20170215141440) do
     t.string   "image"
   end
 
+  create_table "order_statuses", force: :cascade do |t|
+    t.string "status"
+  end
+
   create_table "orders", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,6 +57,9 @@ ActiveRecord::Schema.define(version: 20170215141440) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.boolean  "is_admin"
+    t.string   "name"
+    t.string   "avatar"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

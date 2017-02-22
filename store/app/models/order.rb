@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
 
-	#attr_accessible :user, :user_id
-
-	belongs_to :user	
+	belongs_to 	:order_status
+	belongs_to 	:user
+	has_many 		:carts
+	
 end

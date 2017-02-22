@@ -1,26 +1,39 @@
-<div class="card">
+<div class="fluid">
+<div class="row">
+	<div class="col-md-3 col-lg-3">
+		<img src="<%= @item.image.url(:large) %>" class="img-fluid" alt="Responsive image">
+	</div>
 
-	<img class="card-img-top" src="<%= @item.image.url(:large) %>" alt="Card image cap">
+	<div class="col-md-9 col-lg-9">
 
-	<div class="card-block">
-		
-		<h4 class="card-title"><%= @item.title %></h4>
+		<!--	<img class="img-responsive" src="<#%= @item.image.url(:large) %>" alt="Card image cap"> -->
 
-		<h6 class="card-subtitle mb-2 text-muted">Price: <%= @item.price %>$</h6>
+		<h3><%= @item.title %></h3>
+		<h5 class="pull-right">Price: <%= @item.price %>$</h5>
 
-		<p class="card-text"><%= @item.description %></p>
+		<p><%= @item.description %></p>
 
 		<small>Created at:
+			<time>
+				<%= @item.created_at.to_date.strftime("%d %B, %Y")%>
+			</time>
 
-			<time><%= @item.created_at.to_date.strftime("%d %B, %Y")%></time>
 			<br/>
 			<% if user_signed_in? %>
-				<%= link_to 'Edit item', edit_item_path(@item) %>
-				|
-				<%= link_to "Delete item", item_path(@item), method: :delete, data: { confirm: 'Are you sure'}  %>
+			<%= link_to 'Edit item', edit_item_path(@item), class: 'btn btn-outline-info btn-sm' %>
+			<%= link_to "Delete item", item_path(@item), class: 'btn btn-outline-danger btn-sm', method: :delete, data: { confirm: 'Are you sure' }  %>
 			<% end %>
 		</small>
 
 	</div>
-
+</div>
+<!--
+			<div class="col-md-3 col-lg-3">
+				<div class="list-group">
+					<a href="#" class="list-group-item active">Category 1</a>
+					<a href="#" class="list-group-item">Category 2</a>
+					<a href="#" class="list-group-item">Category 3</a>
+				</div>
+			</div>
+		-->
 </div>

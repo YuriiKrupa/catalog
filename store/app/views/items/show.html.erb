@@ -19,7 +19,7 @@
 			</time>
 
 			<br/>
-			<% if user_signed_in? %>
+			<% if user_signed_in? && current_user.is_admin %>
 			<%= link_to 'Edit item', edit_item_path(@item), class: 'btn btn-outline-info btn-sm' %>
 			<%= link_to "Delete item", item_path(@item), class: 'btn btn-outline-danger btn-sm', method: :delete, data: { confirm: 'Are you sure' }  %>
 			<% end %>

@@ -1,40 +1,40 @@
 class OrdersController < ApplicationController
-	
-	def show
-		
-	end
+  
+  def show
+    
+  end
 
-	def new		
-	end
+  def new   
+  end
 
-	def create
+  def create
 
-	end
+  end
 
-	def edit
+  def edit
 
-	end
+  end
 
-	def update
-		
-	end
+  def update
+    
+  end
 
-	def destroy
-		
-	end
+  def destroy
+    
+  end
 
-	private
+  private
 
-	def get_order
-		
-	end
+  def get_order
+    
+  end
 
-	def 
-		
-	end
+  def 
+    
+  end
 
-	def set_status
-		
-	end
+  def set_status
+    
+  end
 
 end
